@@ -6,6 +6,8 @@ import { ReportsModule } from './reports/reports.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.enity';
 
+
+// From Work
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: "sqlite",
@@ -18,3 +20,4 @@ import { User } from './users/user.enity';
   providers: [AppService],
 })
 export class AppModule { }
+// From Work
