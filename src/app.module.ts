@@ -8,7 +8,7 @@ import { User } from './users/user.enity';
 
 
 // From Work
-// I am Personal
+// I am not  Personal
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: "sqlite",
