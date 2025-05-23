@@ -6,6 +6,8 @@ import { ReportsModule } from './reports/reports.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.enity';
 
+
+// Hello I am new here 
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: "sqlite",
