@@ -4,15 +4,17 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ReportsModule } from './reports/reports.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/user.enity';
+import { Report } from './reports/reports.entity';
+import { User } from './users/user.entity';
 
-
-// From Work
+// Sqlite EXtension install
+// shift + ctrl+p and enter sqlite than data dase 
+// it will show the db in side 
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: "sqlite",
     database: "db.sqlite",
-    entities: [User],
+    entities: [User, Report],
     synchronize: true,
 
   }), UsersModule, ReportsModule],
@@ -20,4 +22,3 @@ import { User } from './users/user.enity';
   providers: [AppService],
 })
 export class AppModule { }
-// From Work
