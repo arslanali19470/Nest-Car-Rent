@@ -4,8 +4,8 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ReportsModule } from './reports/reports.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/user.enity';
 import { Report } from './reports/reports.entity';
+import { User } from './users/user.entity';
 
 // Sqlite EXtension install
 // shift + ctrl+p and enter sqlite than data dase 
@@ -14,7 +14,7 @@ import { Report } from './reports/reports.entity';
   imports: [TypeOrmModule.forRoot({
     type: "sqlite",
     database: "db.sqlite",
-    entities: [User,Report],
+    entities: [User, Report],
     synchronize: true,
 
   }), UsersModule, ReportsModule],
@@ -22,4 +22,3 @@ import { Report } from './reports/reports.entity';
   providers: [AppService],
 })
 export class AppModule { }
- 
