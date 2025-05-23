@@ -7,7 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.enity';
 
 
-// Hello I am new here 
+// From Work
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: "sqlite",
@@ -20,3 +20,4 @@ import { User } from './users/user.enity';
   providers: [AppService],
 })
 export class AppModule { }
+// From Work
