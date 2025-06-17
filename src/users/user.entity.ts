@@ -1,5 +1,6 @@
 import { Exclude } from "class-transformer";
-import { AfterInsert, AfterRemove, AfterUpdate, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Report } from "src/reports/reports.entity";
+import { AfterInsert, AfterRemove, AfterUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -13,6 +14,10 @@ export class User {
     // hide password on response
     @Exclude()
     password: string;
+
+    // ()=>  it is resolving the circular dipendency issue 
+    @OneToMany(() => Report, (report) => report.user) // we cant access the report directly without an arrow fx
+    report: Report[]
 
     @AfterInsert()
     logInsert() {
