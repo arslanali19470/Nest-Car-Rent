@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
 import { ReportsService } from './reports.service';
 import { CreateReportDto } from './dto/create-report.dto';
 import { AuthGuard } from 'src/guards/auth.guards';
@@ -7,6 +7,9 @@ import { User } from 'src/users/user.entity';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { ReportDto } from './dto/report.dto';
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { approvedReportDto } from './dto/approvedReport.dto';
+import { AdminGuard } from 'src/guards/admin.guard';
+import { GetEstimateDto } from './dto/GetEstimate.dto';
 
 @Controller('reports')
 @Serialize(ReportDto)
@@ -31,6 +34,17 @@ export class ReportsController {
     @ApiResponse({ status: 401, description: 'Unauthorized - Login required' })
     ShowAllReports() {
         return this.reportServices.findAll();
+    }
+
+    @Get('estimate')
+    getEstimate(@Query() query: GetEstimateDto) {
+        return this.reportServices.createEstimateResult(query)
+    }
+
+    @Post('/:id')
+    @UseGuards(AdminGuard)
+    approvedReport(@Param('id') id: string, @Body() body: approvedReportDto) {
+        return this.reportServices.changeApproval(id, body.approved)
     }
 
 }

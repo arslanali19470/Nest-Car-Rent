@@ -19,6 +19,9 @@ export class User {
     @OneToMany(() => Report, (report) => report.user) // we cant access the report directly without an arrow fx
     report: Report[]
 
+    @Column({ default: false })
+    admin: boolean;
+
     @AfterInsert()
     logInsert() {
         console.log(`The User Id us ${this.id}`)

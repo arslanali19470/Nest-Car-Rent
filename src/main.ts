@@ -11,9 +11,6 @@ async function bootstrap() {
       whitelist: true // Block extra post data
     })
   )
-  app.use(cookiesession({
-    keys: ['asdfasdf']
-  }))
 
   // Sweger:
   const config = new DocumentBuilder()

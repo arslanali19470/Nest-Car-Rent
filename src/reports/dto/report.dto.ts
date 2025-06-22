@@ -35,6 +35,10 @@ export class ReportDto {
     @Expose()
     mileage: number;
 
+    @ApiProperty({ example: true })
+    @Expose()
+    approved: boolean;
+
     @ApiProperty({ type: userDto }) // reference to nested dto
     @Expose()
     @Type(() => userDto)
